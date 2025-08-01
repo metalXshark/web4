@@ -1,15 +1,15 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { login } from '../utils/authSlice';
+import { register } from '../utils/authSlice';
 
-const AuthForm = () => {
+function SignInForm() {
     const dispatch = useDispatch();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register: formRegister, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
         const { username, password } = data;
-        dispatch(login({ username, password }));
+        dispatch(register({ username, password }));
     };
 
     return (
@@ -19,7 +19,7 @@ const AuthForm = () => {
                 type="text"
                 id="username"
                 name="username"
-                {...register('username', { required: true })}
+                {...formRegister('username', { required: true })}
             />
             {errors.username && <p>Username is required.</p>}
 
@@ -28,13 +28,18 @@ const AuthForm = () => {
                 type="password"
                 id="password"
                 name="password"
-                {...register('password', { required: true })}
+                {...formRegister('password', { required: true, minLength: 8 })}
             />
-            {errors.password && <p>Password is required.</p>}
+            {errors.password && errors.password.type === 'required' && (
+                <p>Password is required.</p>
+            )}
+            {errors.password && errors.password.type === 'minLength' && (
+                <p>Password must be at least 8 characters long.</p>
+            )}
 
-            <input type="submit" value="Log in" id="submit-button" />
+            <input type="submit" value="Sign in" id="submit-button" />
         </form>
     );
-};
+}
 
-export default AuthForm;
+export default SignInForm;
