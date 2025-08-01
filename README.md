@@ -41,7 +41,3 @@ front-end:
 Дополнительные требования к приложению:
 - Все результаты проверки должны сохраняться в базе данных под управлением СУБД PostgreSQL.
 - Для доступа к БД необходимо использовать JPA.
-
-<img width="1624" alt="Screenshot 2023-12-18 at 20 38 34" src="https://github.com/niikmynick/web-lab4-frontend/assets/76608743/4a27470c-0348-4a62-826e-d6fbe9ecb7f7">
-
-<img width="1624" alt="Screenshot 2023-12-18 at 20 38 46" src="https://github.com/niikmynick/web-lab4-frontend/assets/76608743/e05d8394-6a6b-45be-9194-0355edd8ef7e">
